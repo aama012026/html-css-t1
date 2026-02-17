@@ -1,4 +1,42 @@
 :root {
+	--paper        : #ebe3d3;
+	--ink          : #2f2a27;
+
+	--linen        : #d2cabe;
+	--dust         : #9e978f;
+	--slate        : #6a6460;
+
+	--hide         : #978172;
+	--timber       : #645147;
+
+	--rose         : #c69091;
+	--red          : #a03d4f;
+	--oxide        : #68343b;
+
+	--parchment    : #e4ca8a;
+	--yellow       : #d6b347;
+	--brass_shadow : #866e34;
+
+	--apricot      : #dab382;
+	--amber        : #c98231;
+	--umber        : #7c562c;
+
+	--lichen       : #96b09a;
+	--green        : #407d61;
+	--pine         : #375343;
+
+	--sky          : #91bdcb;
+	--cyan         : #5ea8d6;
+	--blue         : #336175;
+
+	--lavender     : #9599be;
+	--indigo       : #4a5392;
+	--midnight     : #373d68;
+
+	--lilac        : #ac8fa2;
+	--purple       : #6d3a70;
+	--grape        : #4e324c;
+
 	--c-primary: rgb(245, 245, 220);
 	--c-accent: rgb(138, 43, 226);
 	--c-fallback-a: rgb(207, 0, 0);
@@ -50,7 +88,7 @@ details {
 	color: var(--c-fg);
 	background-color: var(--c-bg);
 	/* The dimmed colors should be specified individually in a palette in root.
-	The colors don't mix the same and other elements might reuse. */
+	The colors dont mix the same and other elements might reuse. */
 	--c-fg-dim: color-mix(in srgb, var(--c-fg) 80%, var(--c-bg));
 	/* Does this work? Need to test in something not Firefox based. */
 	transition: background-color 1800ms linear;
