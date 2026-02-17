@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
+
 :root {
 	--paper        : #ebe3d3;
 	--ink          : #2f2a27;
@@ -37,32 +39,55 @@
 	--purple       : #6d3a70;
 	--grape        : #4e324c;
 
-	--c-primary: rgb(245, 245, 220);
-	--c-accent: rgb(138, 43, 226);
-	--c-fallback-a: rgb(207, 0, 0);
-	--c-fallback-b: rgb(0, 0, 203);
+	--c-primary: var(--paper);
+	--c-primary-dim: var(--linen);
+	--c-accent: var(--indigo);
+	--c-accent-dim: var(--lavender);
+	--c-fallback-a: var(--red);
+	--c-fallback-b: var(--blue);
 	--c-bg: var(--c-fallback-a);
 	--c-fg: var(--c-fallback-b);
 
 	& .composer {
 		--c-bg: var(--c-accent);
+		--c-bg-dim: var(--c-accent-dim);
 		--c-fg: var(--c-primary);
+		--c-fg-dim: var(--c-primary-dim);
 	}
 
 	& .coder {
 		--c-bg: var(--c-primary);
-		--c-fg: var(--c-accent)
+		--c-bg-dim: var(--c-primary-dim);
+		--c-fg: var(--c-accent);
+		--c-fg-dim: var(--c-accent-dim);
 	}
 }
-
+/* Animations */
 @view-transition {
 	navigation: auto;
 }
 
+summary {
+	transition: font-weight 70ms;
+}
+
+summary::after {
+	transition: font-weight 140ms;
+}
+
 /* Structure */
+body {
+	margin: 0;
+}
+
+header {
+	padding: 0.6em 1em 1em;
+}
+
 details {
 	padding-left: 2rem;
 	& summary {
+		position: relative;
 		font-size: 2rem;
 		list-style-position: outside;
 		padding: 0;
@@ -85,13 +110,40 @@ details {
 
 /* Style */
 .normal {
+	font-family: 'Cascadia Code';
+	font-weight: 300;
 	color: var(--c-fg);
 	background-color: var(--c-bg);
-	/* The dimmed colors should be specified individually in a palette in root.
-	The colors dont mix the same and other elements might reuse. */
-	--c-fg-dim: color-mix(in srgb, var(--c-fg) 80%, var(--c-bg));
-	/* Does this work? Need to test in something not Firefox based. */
-	transition: background-color 1800ms linear;
+
+	& .accent-box {
+		background: var(--c-bg);
+		border-bottom: 2px solid var(--c-bg-dim);
+	}
+
+	& summary {
+		&:hover {
+			font-weight: 400;
+			cursor: pointer;
+			&::after {
+				font-weight: 200;
+			}
+		}
+		&::after {
+			content: "-";
+			font-weight: 600;
+			position: relative;
+			right: -0.7ch;
+			top: 0.05lh;
+			width: 1em;
+			height: 1em;
+			background: linear-gradient(to bottom, var(--c-fg), var(--lavender));
+			background-clip: text;
+		}
+	}
+	details:open summary::after {
+		content: "<"
+	}
+
 	& a {
 		color: var(--c-fg-dim);
 		text-decoration: dashed underline 0.1em var(--c-fg-dim);
@@ -105,5 +157,12 @@ details {
 			text-decoration-color: var(--c-fg);
 			text-decoration-style: solid;
 		}
+	}
+
+	.text-gradient {
+		background: linear-gradient(to bottom, var(--c-fg), 80%, var(--lavender)); 
+		color: transparent;
+		text-shadow: none;
+		background-clip: text;
 	}
 }
