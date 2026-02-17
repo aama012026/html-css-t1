@@ -1,0 +1,71 @@
+:root {
+	--c-primary: rgb(245, 245, 220);
+	--c-accent: rgb(138, 43, 226);
+	--c-fallback-a: rgb(207, 0, 0);
+	--c-fallback-b: rgb(0, 0, 203);
+	--c-bg: var(--c-fallback-a);
+	--c-fg: var(--c-fallback-b);
+
+	& .composer {
+		--c-bg: var(--c-accent);
+		--c-fg: var(--c-primary);
+	}
+
+	& .coder {
+		--c-bg: var(--c-primary);
+		--c-fg: var(--c-accent)
+	}
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+/* Structure */
+details {
+	padding-left: 2rem;
+	& summary {
+		font-size: 2rem;
+		list-style-position: outside;
+		padding: 0;
+		margin: 0;
+	}
+	& ul {
+		list-style-type: none;
+		padding: 0 0 0 0.2em;
+		margin: 0;
+	}
+	& li {
+		font-size: 1.05rem;
+	}
+}
+
+/* Role */
+.visually-hidden {
+	display: none;
+}
+
+/* Style */
+.normal {
+	color: var(--c-fg);
+	background-color: var(--c-bg);
+	/* The dimmed colors should be specified individually in a palette in root.
+	The colors don't mix the same and other elements might reuse. */
+	--c-fg-dim: color-mix(in srgb, var(--c-fg) 80%, var(--c-bg));
+	/* Does this work? Need to test in something not Firefox based. */
+	transition: background-color 1800ms linear;
+	& a {
+		color: var(--c-fg-dim);
+		text-decoration: dashed underline 0.1em var(--c-fg-dim);
+		text-underline-offset: 0.16em;
+		&:visited{
+			color:var(--c-fg-dim);
+			text-decoration-color: var(--c-fg-dim);
+		}
+		&:hover, :focus{
+			color: var(--c-fg);
+			text-decoration-color: var(--c-fg);
+			text-decoration-style: solid;
+		}
+	}
+}
