@@ -101,6 +101,17 @@ header {
 	}
 }
 
+footer {
+	position: absolute;
+	bottom: 0;
+	
+	display: flex;	
+	box-sizing: border-box;
+	width: 100%;
+	justify-content: center;
+	padding: 0.5em 1em 0.7em 1em;
+}
+
 details {
 	margin: 0;
 	margin-right: var(--fontSizeHeader);
@@ -121,6 +132,10 @@ details {
 	}
 }
 
+a > img {
+	height: 1em;
+}
+
 /* Role */
 .visually-hidden {
 	display: none;
@@ -138,9 +153,17 @@ details {
 	color: var(--c-fg);
 	background-color: var(--c-bg);
 
-	& .accent-box {
+	/* Theese two should not define background at all. In general, we need to
+	come up with a coloring strategy that doesn't depend on everything being
+	in normal.*/
+	& .border-rule-bot {
 		background: var(--c-bg);
 		border-bottom: 2px solid var(--c-bg-dim);
+	}
+
+	& .border-rule-top {
+		background: var(--linen);
+		border-top: 1px solid var(--dust);
 	}
 
 	& summary {
@@ -195,6 +218,25 @@ details {
 		border: none;
 		width: 2px;
 	}
+}
+
+a.icon-link {
+	color: black;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+	&:visited {
+		color: black;
+		text-decoration: none;
+	}
+	& span {
+		text-decoration: dashed 0.1em underline black;	
+	}
+	&:hover span {
+		text-decoration-style: solid;
+	}
+
 }
 
 a.no-underline {
