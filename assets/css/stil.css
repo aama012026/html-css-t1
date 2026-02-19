@@ -70,7 +70,7 @@
 }
 
 summary, a {
-	transition:all 70ms;
+	transition:font-weight 70ms;
 }
 
 summary::after {
@@ -80,6 +80,9 @@ summary::after {
 /* Structure */
 body {
 	margin: 0;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: 100vh;
 }
 
 header {
@@ -102,10 +105,11 @@ header {
 }
 
 footer {
-	position: absolute;
+	position: sticky;
 	bottom: 0;
-	
 	display: flex;	
+	flex-wrap: wrap;
+	gap: 0.5em 2em;
 	box-sizing: border-box;
 	width: 100%;
 	justify-content: center;
@@ -132,7 +136,7 @@ details {
 	}
 }
 
-a > img {
+img.icon {
 	height: 1em;
 }
 
@@ -144,6 +148,23 @@ a > img {
 .divider {
 	border: 1px solid var(--c-fg);
 	margin: 0 1em;
+}
+
+.at-icon {
+	width: 1em;
+	height: 1em;
+	background: black;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+}
+  
+.at-icon svg {
+	width: 70%;
+	height: 70%;
+	stroke: var(--linen);
+	fill: none;
+	stroke-width: 3;
 }
 
 /* Style */
@@ -220,23 +241,40 @@ a > img {
 	}
 }
 
-a.icon-link {
-	color: black;
+a:has(.icon) {
 	text-decoration: none;
-	display: inline-flex;
-	align-items: center;
-	gap: 0.4em;
 	&:visited {
 		color: black;
 		text-decoration: none;
 	}
 	& span {
 		text-decoration: dashed 0.1em underline black;	
+		text-underline-offset: 0.1em;
 	}
 	&:hover span {
+		color: black;
 		text-decoration-style: solid;
 	}
+}
 
+div:has(.icon), a:has(.icon) {
+	color: black;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4em;
+}
+
+a.black, a.black:visited {
+	color: black;
+	text-decoration: dashed 0.1em underline black;
+	text-underline-offset: 0.1em;
+	&:hover {
+		font-weight: 600;
+		color: black;
+		text-decoration-color: black;
+		text-decoration-style: solid;
+	}
 }
 
 a.no-underline {
