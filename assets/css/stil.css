@@ -140,6 +140,12 @@ img.icon {
 	height: 1em;
 }
 
+#code-blocks {
+	display: grid;
+	grid-template-columns: auto;
+	justify-content: center;
+}
+
 /* Role */
 .visually-hidden {
 	display: none;
