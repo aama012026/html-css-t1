@@ -1,31 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
 
 :root {
-	--paper        : #ebe3d3;
+	--paper        : #f4ecdd;
 	--ink          : #2f2a27;
 
-	--linen        : #d2cabe;
-	--dust         : #9e978f;
-	--slate        : #6a6460;
+	--linen        : #C9C0B1;
+	--dust         : #a79f94;
+	--slate        : #504b53;
 
-	--hide         : #978172;
+	--hide         : #cfC3ae;
 	--timber       : #645147;
 
 	--rose         : #c69091;
 	--red          : #a03d4f;
-	--oxide        : #68343b;
+	--lipstick     : #7a2e48;
 
-	--parchment    : #e4ca8a;
+	--parchment    : #e7ddcc;
 	--yellow       : #d6b347;
 	--brass_shadow : #866e34;
 
 	--apricot      : #dab382;
-	--amber        : #c98231;
+	--copper       : #cb6e10;
 	--umber        : #7c562c;
 
 	--lichen       : #96b09a;
-	--green        : #407d61;
-	--pine         : #375343;
+	--green        : #387559;
+	--pine         : #275443;
 
 	--sky          : #91bdcb;
 	--cyan         : #5ea8d6;
@@ -33,11 +33,11 @@
 
 	--lavender     : #9599be;
 	--indigo       : #4a5392;
-	--midnight     : #373d68;
+	--midnight     : #363a76;
 
 	--lilac        : #ac8fa2;
 	--purple       : #6d3a70;
-	--grape        : #4e324c;
+	--grape        : #56294f;
 
 	--c-primary: var(--paper);
 	--c-primary-dim: var(--linen);
