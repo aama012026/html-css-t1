@@ -3,48 +3,48 @@
 :root {
 	/* Layout variables */
 	--font-family-primary: 'Cascadia Code';
+	--font-weight-bold:  400;
 	--fontSizeHeader: 2rem;
 	--underline-offset: 0.1em;
-
+	
 	/* Colors */
 	--paper        : #f4ecdd;
-	--ink          : #2f2a27;
-
+	--parchment    : #e7ddcc;
+	--hide         : #cfC3ae;
 	--linen        : #C9C0B1;
 	--dust         : #a79f94;
 	--slate        : #504b53;
-
-	--hide         : #cfC3ae;
+	--ink          : #2f2a27;
+	
 	--timber       : #645147;
-
+	
 	--rose         : #c69091;
 	--red          : #a03d4f;
 	--lipstick     : #7a2e48;
-
-	--parchment    : #e7ddcc;
+	
 	--yellow       : #d6b347;
 	--brass_shadow : #866e34;
-
+	
 	--apricot      : #dab382;
 	--copper       : #cb6e10;
 	--umber        : #7c562c;
-
+	
 	--lichen       : #96b09a;
 	--green        : #387559;
 	--pine         : #275443;
-
+	
 	--sky          : #91bdcb;
 	--cyan         : #5ea8d6;
 	--blue         : #336175;
-
+	
 	--lavender     : #9599be;
 	--indigo       : #4a5392;
 	--midnight     : #363a76;
-
+	
 	--lilac        : #ac8fa2;
 	--purple       : #6d3a70;
 	--grape        : #56294f;
-
+	
 	/* Fallback values in case we forget to specify class in top
 	element. We use the classes below to override the variables */
 	--c-fg: var(--paper);
@@ -52,9 +52,9 @@
 	--c-fg-dim: var(--parchment);
 	--c-border: var(--lilac);
 	--c-gradient: var(--c-fg-dim);
-
+	
 	/* Palettes */
-
+	
 	/* Right now we are just flipping the colors between the palettes.
 	However, with the style overrides below, the palettes are in fact
 	fully independent and can consist of completely different colors.
@@ -66,7 +66,7 @@
 		--c-accent-dim: var(--lavender);
 		--c-gradient: var(--lavender);
 	}
-
+	
 	& .coder {
 		--c-primary: var(--indigo);
 		--c-accent: var(--paper);
@@ -74,24 +74,27 @@
 		--c-accent-dim: var(--parchment);
 		--c-gradient: var(--lavender);
 	}
-
+	
 	/* Color override styles */
 	& .primary {
 		--c-fg: var(--c-primary);
 		--c-bg: var(--c-accent);
-		--c-fg-dim: var(--c-primary-dim);
+		--c-link: var(--c-primary-dim);
+		--c-link-bright: var(--c-primary);
 		--c-border: var(--c-accent-dim);
 	}
 	& .accent {
 		--c-fg: var(--c-accent);
 		--c-bg: var(--c-primary);
-		--c-fg-dim: var(--c-accent-dim);
+		--c-link: var(--c-accent-dim);
+		--c-link-bright: var(--c-accent);
 		--c-border: var(--c-primary-dim);
 	}
 	& .mid-tone {
 		--c-fg: var(--paper);
 		--c-bg: var(--hide);
-		--c-fg-dim: var(--parchment);
+		--c-link: var(--parchment);
+		--c-link-bright: var(--c-paper);
 		--c-gradient: var(--linen);
 		--c-border: var(--dust);
 	}
@@ -105,7 +108,7 @@ in firefox, but nothing bad happens. It is simply ignored */
 }
 
 summary, a {
-	transition:font-weight 70ms;
+	transition: font-weight 70ms;
 }
 
 summary::after {
@@ -207,7 +210,7 @@ img.icon {
 #grid-landing-page {
 	display: grid;
 	grid: 1fr 3fr / 1fr 1fr;
-
+	
 	& * {
 		display: grid;
 		place-items: center;
@@ -232,14 +235,12 @@ img.icon {
 			}
 		}
 	}
-
+	
 	& > h2 {
 		margin: 0;
 		grid-column: span 2;
 		grid-template-columns: 1fr 1fr;
 		place-items: stretch;
-		
-		
 	}
 }
 
@@ -257,42 +258,7 @@ img.icon {
 	margin: 0 1em;
 }
 
-.at-icon {
-	width: 1em;
-	height: 1em;
-	background: black;
-	border-radius: 50%;
-	display: grid;
-	place-items: center;
-}
-
-.at-icon svg {
-	width: 70%;
-	height: 70%;
-	stroke: var(--linen);
-	fill: none;
-	stroke-width: 3;
-}
-
-/* Style */
-.normal {
-	font-family: 'Cascadia Code';
-	font-weight: 300;
-	color: var(--c-fg);
-	background-color: var(--c-bg);
-
-	/* Theese two should not define background at all. In general, we need to
-	come up with a coloring strategy that doesn't depend on everything being
-	in normal.*/
-	& .border-rule-bot {
-		border-bottom: 2px solid var(--c-border);
-	}
-
-	& .border-rule-top {
-		background: var(--linen);
-		border-top: 1px solid var(--dust);
-	}
-
+details.navlist {
 	& summary {
 		&:hover {
 			font-weight: 400;
@@ -301,6 +267,7 @@ img.icon {
 				font-weight: 200;
 			}
 		}
+		
 		&::after {
 			content: "-";
 			font-weight: 600;
@@ -309,42 +276,67 @@ img.icon {
 			top: 0.05lh;
 			width: 1em;
 			height: 1em;
-			background: linear-gradient(to bottom, var(--c-fg), var(--c-gradient));
+			background: linear-gradient(
+				to bottom, var(--c-fg), var(--c-gradient)
+			);
 			background-clip: text;
 		}
 	}
 	
-	details:open summary::after {
+	&:open summary::after {
 		content: "<"
 	}
+}
+
+.at-icon {
+	width: 1em;
+	height: 1em;
+	background: black;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
 	
-	& a {
-		color: var(--c-fg-dim);
-		text-decoration: dashed underline 0.1em var(--c-fg-dim);
-		text-underline-offset: 0.16em;
-		&:visited{
-			color:var(--c-fg-dim);
-			text-decoration-color: var(--c-fg-dim);
-		}
-		&:hover, :focus{
-			color: var(--c-fg);
-			text-decoration-color: var(--c-fg);
-			text-decoration-style: solid;
-		}
+	& svg {
+		width: 70%;
+		height: 70%;
+		stroke: var(--paper);
+		fill: none;
+		stroke-width: 3;
 	}
-	
-	.text-gradient {
-		background: linear-gradient(to bottom, var(--c-fg), 80%, var(--c-gradient)); 
-		color: transparent;
-		text-shadow: none;
-		background-clip: text;
-	}
-	
-	.border-gradient {
-		background: linear-gradient(to bottom, var(--c-fg), 80%, var(--c-gradient));
-		border: none;
-		width: 2px;
-	}
+}
+
+/* Style */
+body {
+	font-family: var(--font-family-primary);
+	font-weight: 300;
+	color: var(--c-fg);
+	background-color: var(--c-bg);
+}
+
+header {
+	border-bottom: 2px solid var(--c-border);
+}
+
+h1 {
+	font-weight: 300;
+}
+
+.text-gradient {
+	background: linear-gradient(
+		to bottom, var(--c-fg), 80%, var(--c-gradient)
+	);
+	color: transparent;
+	--c-link: transparent;
+	text-shadow: none;
+	background-clip: text;
+}
+
+.border-gradient {
+	background: linear-gradient(
+		to bottom, var(--c-fg), 80%, var(--c-gradient)
+	);
+	border: none;
+	width: 2px;
 }
 
 .hero-header {
@@ -353,28 +345,73 @@ img.icon {
 	font-size: 6vw;
 }
 
+.big-link {
+	font-weight: 350;
+	--font-weight-bold: 550;
+}
+
 .mid-tone {
-	& header {
+	& header, header& {
 		border-bottom: 1px solid var(--c-border);
+	}
+	
+	& footer, footer& {
+		border-top: 1px solid var(--c-border);
 	}
 }
 
-a:has(.icon) {
-	text-decoration: none;
+a {
+	&.text-gradient {
+		--c-link: transparent;
+		--c-link-bright: transparent;
+	}
+	color: var(--c-link);
+	text-decoration: dashed underline 0.1em var(--c-link);
+	text-underline-offset: 0.16em;
 	
 	&:visited {
-		color: black;
-		text-decoration: none;
+		color:var(--c-link);
+		text-decoration-color: var(--c-link);
 	}
-	
-	& span {
-		text-decoration: dashed 0.1em underline black;	
-		text-underline-offset: 0.1em;
-	}
-	
-	&:hover span {
-		color: black;
+	&:hover, &:focus {
+		color: var(--c-link-bright);
+		text-decoration-color: var(--c-link-bright);
 		text-decoration-style: solid;
+	}
+	
+	&:has(.icon) {
+		text-decoration: none;
+		
+		&:visited {
+			color: black;
+			text-decoration: none;
+		}
+		
+		& span {
+			text-decoration: dashed 0.1em underline black;
+			text-underline-offset: var(--underline-offset);
+		}
+		
+		&:hover span {
+			text-decoration-style: solid;
+		}
+	}
+	
+	&.no-underline {
+		color: var(--c-link-bright);
+		text-decoration: none;
+		
+		&:visited {
+			color:var(--c-link-bright);
+			text-decoration: none;
+		}
+		
+		&:hover, &:focus {
+			color: var(--c-link-bright);
+			text-decoration: solid underline 2px var(--c-fg);
+			text-underline-offset: 0.16em;
+			font-weight: var(--font-weight-bold);
+		}
 	}
 }
 
@@ -386,38 +423,8 @@ div:has(.icon), a:has(.icon) {
 	gap: 0.4em;
 }
 
-a.black, a.black:visited {
-	color: black;
-	text-decoration: dashed 0.1em underline black;
-	text-underline-offset: 0.1em;
-	
-	&:hover {
-		font-weight: 600;
-		color: black;
-		text-decoration-color: black;
-		text-decoration-style: solid;
-	}
-}
-
-a.no-underline {
-	color: var(--c-fg);
-	text-decoration: none;
-	
-	&:visited {
-		color:var(--c-fg);
-		text-decoration: none;
-	}
-	
-	&:hover, :focus {
-		color: transparent;
-		text-decoration: solid underline 2px var(--c-fg);
-		text-underline-offset: 0.16em;
-		font-weight: 400;
-	}
-}
-
 .btn-tab {
-	font-family: 'Cascadia Code';
+	font-family: var(--font-family-primary);
 	font-weight: 400;
 	font-size: 1.1rem;
 	color: var(--copper);
@@ -442,4 +449,3 @@ a.no-underline {
 		text-decoration-color:  var(--paper);
 	}
 }
-

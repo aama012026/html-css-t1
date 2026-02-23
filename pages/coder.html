@@ -11,18 +11,17 @@
 	<title>Mikkel - Coder</title>
 </head>
 
-<body class="coder primary normal">
+<body class="coder primary">
 <header class="accent draw-bg border-rule-bot" >
-	<h1 class="text-gradient normal">
+	<h1>
 		<a class ="no-underline text-gradient" href="../index.html">Mikkel</a>
 	</h1>
 	<span class="divider border-gradient"></span>
 	<nav>
-		<details open>
+		<details class="navlist" open>
 			<summary class="text-gradient">Coder</summary>
 			<ul>
-				<li><a href="./composer.html">composer</a>
-				</li>
+				<li><a href="./composer.html">composer</a></li>
 			</ul>
 		</details>
 	</nav>
@@ -36,6 +35,8 @@
 			<button id="btn-tab-ts" class="btn-tab">main.ts</button>
 		</div>
 		<div class="responsive-grid">
+			<!-- Do not line break or white-space between <pre> and <code>!
+			Line numbers rely on formatting for positioning... -->
 			<pre><code id="coder-html" class="language-html line-numbers"></code></pre>
 			<pre><code id="stil-css" class="language-css line-numbers"></code></pre>
 			<pre><code id="main-ts" class="language-ts line-numbers"></code></pre>
@@ -43,7 +44,7 @@
 	</section>
 </main>
 
-<footer class="composer normal border-rule-top">
+<footer class="mid-tone">
 	<a class="icon-link" href="mailto:aama012026@gmail.com">
 		<div class="at-icon">
 			<svg class="icon" viewBox="0 0 24 24">
@@ -54,15 +55,18 @@
 		<span>aama012026@gmail.com</span>
 	</a>
 	<a class="icon-link" href="https://github.com/aama012026" target="_blank">
-		<img class="icon" src="../assets/icons/GitHub_Invertocat_Black.svg" alt="GitHub Invertocat Logo">
+		<img class="icon" src="../assets/icons/GitHub_Invertocat_Black.svg"
+			alt="GitHub Invertocat Logo">
 		<span>GitHub</span>
 	</a>
 	<a class="icon-link" href="#" target="_blank">
-		<img class="icon" src="../assets/icons/InBug-Black.png" alt="LinkedIn InBug Logo">
+		<img class="icon" src="../assets/icons/InBug-Black.png"
+			alt="LinkedIn InBug Logo">
 		<span>LinkedIn</span>
 	</a>
 	<div class="icon-link">
-		<img class="icon" src="../assets/icons/map-pin-house.svg" alt="Location pin">
+		<img class="icon" src="../assets/icons/map-pin-house.svg"
+			alt="Location pin">
 		<span>Bergen, Norway</span>
 	</div>
 </footer>
