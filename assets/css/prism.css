@@ -48,11 +48,12 @@ pre[class*='language-'] {
 	width: 80ch;
 	height: 100%;
 	max-width: 80vw;
-	max-height: 80vh;
+	max-height: 75vh;
 	background: var(--paper);
 	margin: 1em;
+	margin-top: 0;
 	border-radius: 0.3em;
-	border: 1px solid var(--amber);
+	border: 1px solid var(--copper);
 }
 :not(pre) > code[class*='language-'] {
 	padding: 0.1em;
