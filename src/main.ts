@@ -39,7 +39,7 @@ container.addEventListener('pointerdown', (e) => {
 	showActiveTabsOnly();
 });
 
-async function getFileContent(path: string):Promise<string> {
+async function getFileContent(path: string): Promise<string> {
 	return await fetch(path).then(r => r.text());
 }
 

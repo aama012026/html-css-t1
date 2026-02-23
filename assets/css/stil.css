@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
 
 :root {
+	/* Layout variables */
+	--font-family-primary: 'Cascadia Code';
+	--fontSizeHeader: 2rem;
+	--underline-offset: 0.1em;
+
+	/* Colors */
 	--paper        : #f4ecdd;
 	--ink          : #2f2a27;
 
@@ -39,31 +45,48 @@
 	--purple       : #6d3a70;
 	--grape        : #56294f;
 
-	--c-primary: var(--paper);
-	--c-primary-dim: var(--linen);
-	--c-accent: var(--indigo);
-	--c-accent-dim: var(--lavender);
-	--c-fallback-a: var(--paper);
-	--c-fallback-b: var(--indigo);
-	--c-bg: var(--c-fallback-a);
-	--c-fg: var(--c-fallback-b);
+	/* Fallback values in case we forget to specify class in top
+	element. We use the classes below to override the variables */
+	--c-fg: var(--paper);
+	--c-bg: var(--purple);
+	--c-fg-dim: var(--parchment);
+	--c-bg-dim: var(--lilac);
 
-	--fontSizeHeader: 2rem;
+	/* Palettes */
 
+	/* Right now we are just flipping the colors between the palettes.
+	However, with the style overrides below, the palettes are in fact
+	fully independent and can consist of completely different colors.
+	This also allow us to reuse html across pages, f.ex. w/templates. */
 	& .composer {
-		--c-bg: var(--c-accent);
-		--c-bg-dim: var(--c-accent-dim);
-		--c-fg: var(--c-primary);
-		--c-fg-dim: var(--c-primary-dim);
+		--c-primary: var(--paper);
+		--c-accent: var(--indigo);
+		--c-primary-dim: var(--parchment);
+		--c-accent-dim: var(--lavender);
 	}
 
 	& .coder {
-		--c-bg: var(--c-primary);
-		--c-bg-dim: var(--c-primary-dim);
+		--c-primary: var(--indigo);
+		--c-accent: var(--paper);
+		--c-primary-dim: var(--lavender);
+		--c-accent-dim: var(--parchment);
+	}
+
+	/* Color override styles */
+	& .primary {
+		--c-fg: var(--c-primary);
+		--c-bg: var(--c-accent);
+		--c-fg-dim: var(--c-primary-dim);
+		--c-bg-dim: var(--c-accent-dim);
+	}
+	& .accent {
 		--c-fg: var(--c-accent);
+		--c-bg: var(--c-primary);
 		--c-fg-dim: var(--c-accent-dim);
+		--c-bg-dim: var(--c-primary-dim);
 	}
 }
+
 /* Animations */
 @view-transition {
 	navigation: auto;
@@ -172,6 +195,10 @@ img.icon {
 /* Role */
 .visually-hidden {
 	display: none;
+}
+
+.draw-bg {
+	background: var(--c-bg);
 }
 
 .divider {
