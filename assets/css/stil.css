@@ -50,7 +50,8 @@
 	--c-fg: var(--paper);
 	--c-bg: var(--purple);
 	--c-fg-dim: var(--parchment);
-	--c-bg-dim: var(--lilac);
+	--c-border: var(--lilac);
+	--c-gradient: var(--c-fg-dim);
 
 	/* Palettes */
 
@@ -63,6 +64,7 @@
 		--c-accent: var(--indigo);
 		--c-primary-dim: var(--parchment);
 		--c-accent-dim: var(--lavender);
+		--c-gradient: var(--lavender);
 	}
 
 	& .coder {
@@ -70,6 +72,7 @@
 		--c-accent: var(--paper);
 		--c-primary-dim: var(--lavender);
 		--c-accent-dim: var(--parchment);
+		--c-gradient: var(--lavender);
 	}
 
 	/* Color override styles */
@@ -77,13 +80,20 @@
 		--c-fg: var(--c-primary);
 		--c-bg: var(--c-accent);
 		--c-fg-dim: var(--c-primary-dim);
-		--c-bg-dim: var(--c-accent-dim);
+		--c-border: var(--c-accent-dim);
 	}
 	& .accent {
 		--c-fg: var(--c-accent);
 		--c-bg: var(--c-primary);
 		--c-fg-dim: var(--c-accent-dim);
-		--c-bg-dim: var(--c-primary-dim);
+		--c-border: var(--c-primary-dim);
+	}
+	& .mid-tone {
+		--c-fg: var(--paper);
+		--c-bg: var(--hide);
+		--c-fg-dim: var(--parchment);
+		--c-gradient: var(--linen);
+		--c-border: var(--dust);
 	}
 }
 
@@ -196,18 +206,40 @@ img.icon {
 
 #grid-landing-page {
 	display: grid;
-	align-items: center;
-	justify-items: center;
-	grid: auto 1fr / 1fr 1fr;
-	& > h2 {
-		grid-column: span 2;
+	grid: 1fr 3fr / 1fr 1fr;
+
+	& * {
+		display: grid;
+		place-items: center;
+		& a {
+			font-size: 9vw;
+			padding: 0 0.5ch;
+		}
+		&.coder {
+			align-items: end;
+			justify-content: right;
+			padding-right: 0.5ch;
+			&:has(a) {
+				align-items: center;
+			}
+		}
+		&.composer {
+			align-items: end;
+			justify-content: left;
+			padding-left: 0.5ch;
+			&:has(a) {
+				align-items: center;
+			}
+		}
 	}
-	& > section {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
+
+	& > h2 {
+		margin: 0;
+		grid-column: span 2;
+		grid-template-columns: 1fr 1fr;
+		place-items: stretch;
+		
+		
 	}
 }
 
@@ -253,7 +285,7 @@ img.icon {
 	come up with a coloring strategy that doesn't depend on everything being
 	in normal.*/
 	& .border-rule-bot {
-		border-bottom: 2px solid var(--c-bg-dim);
+		border-bottom: 2px solid var(--c-border);
 	}
 
 	& .border-rule-top {
@@ -277,7 +309,7 @@ img.icon {
 			top: 0.05lh;
 			width: 1em;
 			height: 1em;
-			background: linear-gradient(to bottom, var(--c-fg), var(--lavender));
+			background: linear-gradient(to bottom, var(--c-fg), var(--c-gradient));
 			background-clip: text;
 		}
 	}
@@ -302,16 +334,28 @@ img.icon {
 	}
 	
 	.text-gradient {
-		background: linear-gradient(to bottom, var(--c-fg), 80%, var(--lavender)); 
+		background: linear-gradient(to bottom, var(--c-fg), 80%, var(--c-gradient)); 
 		color: transparent;
 		text-shadow: none;
 		background-clip: text;
 	}
 	
 	.border-gradient {
-		background: linear-gradient(to bottom, var(--c-fg), 80%, var(--lavender));
+		background: linear-gradient(to bottom, var(--c-fg), 80%, var(--c-gradient));
 		border: none;
 		width: 2px;
+	}
+}
+
+.hero-header {
+	color: var(--c-fg);
+	font-weight: 300;
+	font-size: 6vw;
+}
+
+.mid-tone {
+	& header {
+		border-bottom: 1px solid var(--c-border);
 	}
 }
 
