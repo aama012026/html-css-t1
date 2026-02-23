@@ -1,19 +1,19 @@
 const container = queryExistingElement('.tabline');
 const codeElements = {
     coderHtml: {
-        sourceText: await getFileContent('/pages/coder.html'),
+        sourceText: await getFileContent('../pages/coder.html'),
         button: queryExistingElement('#btn-tab-html'),
         view: queryExistingElement('#coder-html'),
         isActive: true
     },
     stilCss: {
-        sourceText: await getFileContent('/assets/css/stil.css'),
+        sourceText: await getFileContent('../assets/css/stil.css'),
         button: queryExistingElement('#btn-tab-css'),
         view: queryExistingElement('#stil-css'),
         isActive: false
     },
     mainTs: {
-        sourceText: await getFileContent('/src/main.ts'),
+        sourceText: await getFileContent('../src/main.ts'),
         button: queryExistingElement('#btn-tab-ts'),
         view: queryExistingElement('#main-ts'),
         isActive: false
