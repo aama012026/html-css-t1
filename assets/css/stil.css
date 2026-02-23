@@ -88,6 +88,8 @@
 }
 
 /* Animations */
+/* Cross-page view transitions are currently not implemented
+in firefox, but nothing bad happens. It is simply ignored */
 @view-transition {
 	navigation: auto;
 }
@@ -192,7 +194,24 @@ img.icon {
 	justify-content: center;
 }
 
-/* Role */
+#grid-landing-page {
+	display: grid;
+	align-items: center;
+	justify-items: center;
+	grid: auto 1fr / 1fr 1fr;
+	& > h2 {
+		grid-column: span 2;
+	}
+	& > section {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+/* Roles */
 .visually-hidden {
 	display: none;
 }
@@ -224,8 +243,6 @@ img.icon {
 }
 
 /* Style */
-/* TODO: Inversion logic needs to be cleaned up to work nicely with
-text gradients. Right now the composer page header is broken. */
 .normal {
 	font-family: 'Cascadia Code';
 	font-weight: 300;
@@ -236,7 +253,6 @@ text gradients. Right now the composer page header is broken. */
 	come up with a coloring strategy that doesn't depend on everything being
 	in normal.*/
 	& .border-rule-bot {
-		background: var(--c-bg);
 		border-bottom: 2px solid var(--c-bg-dim);
 	}
 
