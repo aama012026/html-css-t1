@@ -50,8 +50,8 @@
 	--c-fg: var(--paper);
 	--c-bg: var(--purple);
 	--c-fg-dim: var(--parchment);
-	--c-border: var(--lilac);
 	--c-gradient: var(--c-fg-dim);
+	--border: 2px solid var(--lilac);
 	
 	/* Palettes */
 	
@@ -81,14 +81,14 @@
 		--c-bg: var(--c-accent);
 		--c-link: var(--c-primary-dim);
 		--c-link-bright: var(--c-primary);
-		--c-border: var(--c-accent-dim);
+		--border: 2px solid var(--c-accent-dim);
 	}
 	& .accent {
 		--c-fg: var(--c-accent);
 		--c-bg: var(--c-primary);
 		--c-link: var(--c-accent-dim);
 		--c-link-bright: var(--c-accent);
-		--c-border: var(--c-primary-dim);
+		--border: 2px solid var(--c-primary-dim);
 	}
 	& .mid-tone {
 		--c-fg: var(--paper);
@@ -96,7 +96,7 @@
 		--c-link: var(--parchment);
 		--c-link-bright: var(--c-paper);
 		--c-gradient: var(--linen);
-		--c-border: var(--dust);
+		--border: 1px solid var(--dust);
 	}
 }
 
@@ -299,7 +299,7 @@ details.navlist {
 	& svg {
 		width: 70%;
 		height: 70%;
-		stroke: var(--paper);
+		stroke: var(--c-bg);
 		fill: none;
 		stroke-width: 3;
 	}
@@ -314,50 +314,17 @@ body {
 }
 
 header {
-	border-bottom: 2px solid var(--c-border);
+	background: var(--c-bg);
+	border-bottom: var(--border);
+}
+
+footer {
+	background: var(--c-bg);
+	border-top: var(--border);
 }
 
 h1 {
 	font-weight: 300;
-}
-
-.text-gradient {
-	background: linear-gradient(
-		to bottom, var(--c-fg), 80%, var(--c-gradient)
-	);
-	color: transparent;
-	--c-link: transparent;
-	text-shadow: none;
-	background-clip: text;
-}
-
-.border-gradient {
-	background: linear-gradient(
-		to bottom, var(--c-fg), 80%, var(--c-gradient)
-	);
-	border: none;
-	width: 2px;
-}
-
-.hero-header {
-	color: var(--c-fg);
-	font-weight: 300;
-	font-size: 6vw;
-}
-
-.big-link {
-	font-weight: 350;
-	--font-weight-bold: 550;
-}
-
-.mid-tone {
-	& header, header& {
-		border-bottom: 1px solid var(--c-border);
-	}
-	
-	& footer, footer& {
-		border-top: 1px solid var(--c-border);
-	}
 }
 
 a {
@@ -422,6 +389,37 @@ div:has(.icon), a:has(.icon) {
 	justify-content: center;
 	gap: 0.4em;
 }
+
+.text-gradient {
+	background: linear-gradient(
+		to bottom, var(--c-fg), 80%, var(--c-gradient)
+	);
+	color: transparent;
+	--c-link: transparent;
+	text-shadow: none;
+	background-clip: text;
+}
+
+.border-gradient {
+	background: linear-gradient(
+		to bottom, var(--c-fg), 80%, var(--c-gradient)
+	);
+	border: none;
+	width: 2px;
+}
+
+.hero-header {
+	color: var(--c-fg);
+	font-weight: 300;
+	font-size: 6vw;
+}
+
+.big-link {
+	font-weight: 350;
+	--font-weight-bold: 550;
+}
+
+
 
 .btn-tab {
 	font-family: var(--font-family-primary);
